@@ -1,4 +1,3 @@
-const { log } = require('console');
 const { app, BrowserWindow, Menu, ipcMain, shell, webContents } = require('electron');
 const path = require('path')
 const fs = require('fs')
@@ -53,7 +52,7 @@ async function handleResizeImage(event, data) {
 
         shell.openPath(data.dest)
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }
 
@@ -74,8 +73,6 @@ function createMainWindow() {
     if (isDevelopment) {
         mainWindow.webContents.openDevTools();
     }
-
-    log({ isDevelopment, isMac })
 
     ipcMain.on('image:resize', handleResizeImage)
 
