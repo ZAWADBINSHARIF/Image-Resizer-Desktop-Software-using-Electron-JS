@@ -5,12 +5,13 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "SET NODE_ENV=development && electronmon .",
-    "production": "SET NODE_ENV=production && electron ."
+    "dev": "cross-env NODE_ENV=development electronmon .",
+    "prod": "cross-env NODE_ENV=production electron ."
   },
   "author": "Zawad Bin Sharif",
   "license": "MIT",
   "dependencies": {
+    "cross-env": "^7.0.3",
     "electron": "^24.3.1",
     "resize-img": "^2.0.0",
     "toastify-js": "^1.12.0"

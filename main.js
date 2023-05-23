@@ -6,7 +6,7 @@ const os = require('os')
 const resizeImg = require('resize-img')
 
 const isMac = process.platform === 'darwin'
-const isDevelopment = process.env.NODE_ENV !== 'development'
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 let mainWindow;
 
@@ -53,7 +53,7 @@ async function handleResizeImage(event, data) {
 
         shell.openPath(data.dest)
     } catch (error) {
-        console.log(error);
+        console.log(error)
     }
 }
 
@@ -77,7 +77,6 @@ function createMainWindow() {
 
     log({ isDevelopment, isMac })
 
-    ipcMain.handle('news', () => 'pong')
     ipcMain.on('image:resize', handleResizeImage)
 
     mainWindow.loadFile(path.join(__dirname, 'renderer', 'index.html'))
@@ -93,7 +92,6 @@ function createAboutWindow() {
     })
 
     aboutWindow.loadFile(path.join(__dirname, 'renderer', 'about.html'))
-    log(BrowserWindow.getAllWindows.length)
 }
 
 // when app ready

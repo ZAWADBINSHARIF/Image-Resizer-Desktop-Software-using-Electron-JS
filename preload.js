@@ -5,7 +5,6 @@ const path = require('path')
 const toastify = require('toastify-js')
 
 contextBridge.exposeInMainWorld('ipcRenderer', {
-    news: () => ipcRenderer.invoke('news'),
     send: (channel, data) => ipcRenderer.send(channel, data),
     on: (channel, func) =>
         ipcRenderer.on(channel, (event, ...arg) => func(...arg))
